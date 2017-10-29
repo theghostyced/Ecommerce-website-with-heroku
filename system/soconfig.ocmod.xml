@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name><![CDATA[soconfig theme]]></name>
+    <version><![CDATA[1.5.0]]></version>
+    <author><![CDATA[Magentech - Magentech.com]]></author>
+	
+	<!--Catalog/controller/common-->
+	<file path="catalog/controller/common/language.php">
+		<operation>
+			<search ><![CDATA[$data['languages'] = array();]]></search>
+			<add position="after"><![CDATA[
+			if (isset($this->request->get['lang']) && $this->request->get['lang'] == 'ar') {
+				$this->session->data['language'] = $this->request->get['lang'];
+				$this->response->redirect($this->url->link('common/home'));
+			}
+		]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/common/cart.php">
+		<operation>
+			<search ><![CDATA[$this->load->language('common/cart');]]></search>
+			<add position="before"><![CDATA[		
+			$this->load->language('extension/soconfig/cart');
+			$data['text_items'] 	      = $this->language->get('text_items');
+			$data['text_shop'] 	          = $this->language->get('text_shop');
+			$data['text_shop_cart'] 	  = $this->language->get('text_shop_cart');
+			$data['text_title'] 	      = $this->language->get('text_title');
+			$data['text_thumb'] 	      = $this->language->get('text_thumb');
+			$data['text_success'] 	      = $this->language->get('text_success');
+			
+			$data['text_items_full'] 	  = $this->language->get('text_items_full');
+			
+		]]></add>
+		</operation>
+	</file>
+	<file path="catalog/controller/common/header.php">
+		<operation >
+			<search ><![CDATA[$this->load->language('common/header');]]></search>
+			<add position="before"><![CDATA[
+			// Add New Position For Header
+			$data['content_search'] 	= $this->load->controller('extension/soconfig/content_search');
+			$data['content_menu'] 	= $this->load->controller('extension/soconfig/content_menu');
+			$data['content_menu1'] 	= $this->load->controller('extension/soconfig/content_menu1');
+			$data['content_topbar'] 	= $this->load->controller('extension/soconfig/content_topbar');
+			$data['text_items'] 	      = $this->language->get('text_items');
+			$data['text_shop'] 	          = $this->language->get('text_shop');
+			$data['text_shop_cart'] 	  = $this->language->get('text_shop_cart');
+			$data['compare'] = $this->url->link('product/compare', '', 'SSL');
+			$data['text_compare']  = sprintf($this->language->get('text_compare'),(isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
+		]]></add>
+		</operation>
+		<operation >
+			<search ><![CDATA[$this->load->language('common/header');]]></search>
+			<add position="before"><![CDATA[
+			// Add New Position For Header
+			$this->load->language('extension/soconfig/soconfig');
+			$data['text_contact'] = $this->language->get('text_contact');
+			$data['text_more'] 	  = $this->language->get('text_more');
+			$data['text_menu'] 	  = $this->language->get('text_menu');
+			$data['text_hotline'] 	  = $this->language->get('text_hotline');
+			$data['text_compare'] 	  = $this->language->get('text_compare');
+		]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA[$data['title'] = $this->document->getTitle();]]></search>
+			<add position="after"><![CDATA[
+				// Add Source CSS & JS For Header
+				$this->document->addStyle('catalog/view/javascript/so_searchpro/css/so_searchpro.css'); 
+				
+				$this->document->addStyle('catalog/view/javascript/so_megamenu/so_megamenu.css');
+				$this->document->addStyle('catalog/view/javascript/so_megamenu/wide-grid.css');
+				$this->document->addScript('catalog/view/javascript/so_megamenu/so_megamenu.js'); 
+			]]></add>
+		</operation>
+		<operation  >
+			<search ><![CDATA[$category['top']]]></search>
+			<add position="after"><![CDATA[
+			/***theme's changes***/
+			$data['theme'] = $this->config->get('theme_default_directory');
+			$data['store_id'] = $this->config->get('config_store_id');
+			$data['lang'] = $this->config->get('config_language_id');
+
+			$store_id = $this->config->get('config_store_id');
+			$lang = $this->config->get('config_language_id');
+			$data['registry'] = $this->registry;
+					
+			/* Array Config  */
+			$text_config = array(
+				'preloader',
+				'preloader_animation',
+				'mutiColorTheme' ,
+				'themecolor' ,
+				'layouts',
+				'typelayout',
+				'type_banner',
+				'scroll_animation',
+				'toppanel_status' 	,
+				'toppanel_type' 	,
+				'phone_status' 		,
+				'welcome_message_status' ,
+				'wishlist_status' 	,
+				'checkout_status' 	,
+				'lang_status' 		,
+				'socials_status' 	,
+				'contact_number' 	,
+				'welcome_message' 	,
+				
+				'typeheader' 		,
+				'layoutstyle' 		,
+				'general_bgcolor' 	,
+				'pattern' 			,
+				'contentbg',
+				'content_bg_mode' 	,
+				'content_attachment',
+				
+				'body_status' 		,
+				'normal_body' 		,
+				'url_body' 			,
+				'family_body' 		,
+				'selector_body' 	,
+				'menu_status' 		,
+				'normal_menu' 		,
+				'url_menu' 			,
+				'family_menu' 		,
+				'selector_menu'		,
+				'heading_status' 	,
+				'normal_heading' 	,
+				'url_heading' 		,
+				'family_heading'  	,
+				'selector_heading'	,
+				
+				'cssinput_status'	,
+				'jsinput_status'	,
+				'custom_css' 		,
+				'custom_js' 		,
+				'cssfile_status'	,
+				'jsfile_status' 	,
+				'cssfile' 	,
+				'jsfile' 	,
+			);
+			
+			foreach ($text_config as $text ) {
+				$data[$text] = $this->soconfig->get_settings($text);
+			}
+			
+			/***end theme's changes***/
+		]]></add>
+		</operation>
+		
+	</file>
+	
+	<file path="catalog/controller/common/footer.php">
+		<operation >
+			<search ><![CDATA[$this->load->language('common/footer');]]></search>
+			<add position="before"><![CDATA[
+			// Add New Position For Footer
+			$data['footertop'] 	= $this->load->controller('extension/soconfig/content_footertop');
+
+			$data['footer_block1'] 	= $this->load->controller('extension/soconfig/footer_block1');
+			$data['footer_block2'] 	= $this->load->controller('extension/soconfig/footer_block2');
+			$data['footer_block3'] 	= $this->load->controller('extension/soconfig/footer_block3');
+			$data['footer_block4'] 	= $this->load->controller('extension/soconfig/footer_block4');
+			$data['footer_block5'] 	= $this->load->controller('extension/soconfig/footer_block5');
+			$data['footer_block6'] 	= $this->load->controller('extension/soconfig/footer_block6');
+			$data['footer_block7'] 	= $this->load->controller('extension/soconfig/footer_block7');
+			$data['footer_block8'] 	= $this->load->controller('extension/soconfig/footer_block8');
+			$data['footer_block9'] 	= $this->load->controller('extension/soconfig/footer_block9');
+			$data['footerbottom'] 	= $this->load->controller('extension/soconfig/content_footerbottom');
+		]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA[return $this->load->view('common/footer', $data); ]]></search>
+			<add position="before"><![CDATA[	
+				/***theme's changes***/
+				$data['theme'] = $this->config->get('theme_default_directory');
+				$data['store_id'] = $this->config->get('config_store_id');
+				$data['lang'] = $this->config->get('config_language_id');
+				$data['registry'] = $this->registry;
+				$store_id = $this->config->get('config_store_id');
+				$lang = $this->config->get('config_language_id');
+				$data['direction'] = $this->language->get('direction');
+				
+				/* Array Config  */
+				$text_config = array(
+					'backtop',
+					'copyright',
+					'socials_status',
+					'imgpayment_status',
+					'imgpayment',
+					'footerpayment_status',
+					'customblock_status',
+					'social_fb_status',
+					'social_twitter_status',
+					'social_custom_status',
+					'facebook',
+					'twitter',
+					'video_code',
+					
+					'footer_socials',
+					'footerpayment',
+					'customblock' ,
+					'mutiColorTheme' ,
+					'themecolor' ,
+					'typefooter' 	,
+				);
+				
+				/*You CAN NOT remove (or unreadable) those links without permission. Removing the link and template sponsor Please visit opencartworks.com or contact with e-mail (contact@ytcvn.com) If you don't want to link back to smartaddons.com, you can always pay a link removal donation. This will allow you to use the template link free on one domain name. Also, kindly send me the site's url so I can include it on my list of verified users. */
+				$opencartworks = '';
+				foreach ($text_config as $text ) {
+					$data[$text] = $this->soconfig->get_settings($text);
+					if($text=='copyright') $data[$text] = $data[$text].$opencartworks;
+				}
+				
+				/***end theme's changes***/
+		]]></add>
+		</operation>
+			
+	</file>
+	
+	<!--End catalog/controller/common-->
+	
+	<!--catalog/controller/product/-->
+	<file path="catalog/controller/product/category.php" >
+		<operation>
+            <search ><![CDATA[$data['heading_title'] = $category_info['name']]]></search>
+            <add position="before" ><![CDATA[
+                /***theme's changes***/
+                $data['store_id'] = $this->config->get('config_store_id');
+                $data['lang'] = $this->config->get('config_language_id');
+				$data['theme'] = $this->config->get('theme_default_directory');
+				$data['registry'] = $this->registry;
+				$data['our_url'] = $this->registry->get('url');
+                $lang = $this->config->get('config_language_id');
+                $store_id = $this->config->get('config_store_id');
+                $data['category'] = $this->model_catalog_category->getCategory($category_id);
+				
+				$this->load->model('catalog/category');
+				$this->load->model('soconfig/general');
+				
+                $soconfig_general 		= $this->config->get('soconfig_general_store');
+                $soconfig_pages 		= $this->config->get('soconfig_pages_store');
+                $soconfig_lang 			= $this->config->get('soconfig_lang_store');
+
+                /* PAGE PRODUCT */
+				$text_config = array(
+					'product_catalog_refine',
+					'product_catalog_refine_col_lg',
+					'product_catalog_refine_col_md',
+					'product_catalog_refine_col_sm',
+					'product_catalog_refine_col_xs',
+					'deals_today',
+					'lsttitle_cate_status',
+					'lstimg_cate_status',
+					'product_catalog_mode',
+					'product_catalog_column_lg',
+					'product_catalog_column_md',
+					'product_catalog_column_sm',
+					'product_catalog_column_xs',
+					'secondimg',
+					'rating_status',
+					'lstdescription_status',
+					'sale_status',
+					'new_status',
+					'days',
+					'quick_status',
+					'discount_status',
+					'countdown_status',
+					'sale_text',
+					'new_text',
+					'quick_view_text',
+					'scroll_animation',
+					
+				);
+				foreach ($text_config as $text ) {
+					$data[$text] = $this->soconfig->get_settings($text);
+				}
+				//Language Variables
+				$this->load->language('extension/soconfig/soconfig');
+				$data['lang_todaysdeal'] = $this->language->get('lang_todaysdeal');
+				$data["view_details"]  	= $this->language->get('view_details');
+				$data['countdown_title_day'] 	= $this->language->get('countdown_title_day');
+				$data['countdown_title_hour'] 	= $this->language->get('countdown_title_hour');
+				$data['countdown_title_minute'] = $this->language->get('countdown_title_minute');
+				$data['countdown_title_second'] = $this->language->get('countdown_title_second');
+				$data['text_sidebar'] = $this->language->get('text_sidebar');
+                /***end theme's changes***/
+
+                    ]]>
+			</add>
+        </operation>
+		<operation >
+			<search ><![CDATA[$data['breadcrumbs'] = array();]]></search>
+			<add position="before"><![CDATA[
+			$this->load->language('extension/soconfig/soconfig');
+			$data['text_stock'] 	= $this->language->get('text_stock');
+			$data['text_price_old'] = $this->language->get('text_price_old');
+			$data['text_price_save'] = $this->language->get('text_price_save');
+			$data['text_price_sale'] = $this->language->get('text_price_sale');
+			$data['text_viewdeals']  = $this->language->get('text_viewdeals');
+			$data['direction'] = $this->language->get('direction');
+			]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA[$data['products'][] = array(]]></search>
+			<add  position="before"><![CDATA[
+				if ((float)$result['special']) {
+					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+					$price_sale = $this->currency->format($this->tax->calculate($result['price']- $result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+				} else {
+					$special = false;
+					$price_sale = false;
+				}
+				
+				$images = $this->model_catalog_product->getProductImages($result['product_id']);
+				if(isset($images[0]['image']) && !empty($images[0]['image'])){
+					$images =$images[0]['image'];
+					} else {
+					$images = false;
+				}
+				
+				if ((float)$result['special']) {
+                    $discount = '-'.round((($result['price'] - $result['special'])/$result['price'])*100, 0).'%';
+                } else {
+                    $discount = false;
+                }
+				
+				if ($result['quantity'] <= 0) {
+					$stock = $result['stock_status'];
+				} elseif ($this->config->get('config_stock_display')) {
+					$stock = $result['quantity'];
+				} else {
+					$stock = $this->language->get('text_instock');
+				}
+				
+				
+			   ]]></add>
+		</operation>
+		<operation>
+			<search><![CDATA['special'     => $special,]]></search>
+			<add  position="after"><![CDATA[
+				'image_deal'      => $this->model_tool_image->resize($result['image'],240 ,240 ),
+				'thumb2' 			=> $this->model_tool_image->resize($images, $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height')),
+				'manufacturer'      => $result['manufacturer'],
+				'manufacturers'     => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $result['manufacturer_id']),
+				'model'      		=> $result['model'],
+				'stock'      		=> $stock,
+				'special_end_date'  => $this->model_soconfig_general->getDateEnd($result['product_id']),
+				'price_sale'     	=> $price_sale,
+				'date_available'  => $result['date_available'],
+				'discount'  => $discount,
+			   ]]></add>
+		</operation> 
+		<operation >
+			<search ><![CDATA[$data['categories'] = array();]]></search>
+			<add position="after"><![CDATA[
+				$data['category_id'] = $this->request->get['path'];
+			]]>
+			</add>
+		</operation>
+		<operation >
+		   <search ><![CDATA[$data['categories'][] ]]></search>
+		   <add position="before"><![CDATA[
+		    if ($result['image']) {
+		     $image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+		    } else {
+		     $image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_category_width'), $this->config->get($this->config->get('config_theme') . '_image_category_height'));
+		    }
+		   ]]>
+		   </add>
+		</operation>
+		  
+		<operation>
+		   <search ><![CDATA[$data['categories'][]]]></search>
+		   <add position="after"><![CDATA[
+			'thumb'       => $image,
+			  ]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/product.php">
+		 <operation>
+            <search><![CDATA[if ($product_info) { ]]></search>
+            <add position="after"><![CDATA[
+            /***theme's changes***/
+            $data['store_id'] = $this->config->get('config_store_id');
+            $data['lang'] 	  = $this->config->get('config_language_id');
+            $lang = $this->config->get('config_language_id');
+            $store_id = $this->config->get('config_store_id');
+			$this->load->model('soconfig/general');
+			
+			$data['theme'] = $this->config->get('theme_default_directory');
+			$data['video1'] 	= $this->model_soconfig_general->getProductOption($product_id, 'video1');
+			$data['tab_title'] 	= $this->model_soconfig_general->getProductOption($product_id, 'tab_title');
+			$data['html_product_tab'] = $this->model_soconfig_general->getProductOption($product_id, 'html_product_tab');
+			$data['html_product_shortdesc'] 	= $this->model_soconfig_general->getProductOption($product_id, 'html_product_shortdesc');
+			$data['special_end_date'] = $this->model_soconfig_general->getDateEnd($product_id);
+			$data['product_info']	= $this->model_catalog_product->getProduct($product_id);
+			$data['our_url'] = $this->registry->get('url');
+			$data['direction'] = $this->language->get('direction');
+			
+			
+			//Language Variables
+			$this->load->language('extension/soconfig/soconfig');
+			$data['lang_todaysdeal'] = $this->language->get('lang_todaysdeal');
+			$data["view_details"]  	= $this->language->get('view_details');
+			$data['countdown_title_day'] 	= $this->language->get('countdown_title_day');
+			$data['countdown_title_hour'] 	= $this->language->get('countdown_title_hour');
+			$data['countdown_title_minute'] = $this->language->get('countdown_title_minute');
+			$data['countdown_title_second'] = $this->language->get('countdown_title_second');	
+			$data['overview'] = $this->language->get('overview');	
+			$data['text_sidebar'] = $this->language->get('text_sidebar');
+			
+			/* PAGE PRODUCT */
+			$text_config = array(
+				'countdown_status',
+				'thumbnails_position',
+				'product_enablezoom',
+				'product_zoommode',
+				'product_zoomlenssize',
+				'tabs_position',
+				'related_status',
+				'product_page_button',
+				'discount_status',
+				'quick_status',
+				'rating_status',
+				'days',
+				'secondimg',
+				'sale_status',
+				'product_related_column_lg',
+				'product_related_column_md',
+				'product_related_column_sm',
+				'product_related_column_xs',
+				'sale_text',
+				'new_text',
+				'quick_view_text',
+				'scroll_animation',
+				'radio_style',
+				'check_style',
+				'related_position',
+				'product_socialshare',
+				'product_gallerysize',
+			);
+			foreach ($text_config as $text ) {
+				$data[$text] = $this->soconfig->get_settings($text);
+			}
+			
+			if ((float)$product_info['special']) {
+                    $data['discount'] = '-'.round((($product_info['price'] - $product_info['special'])/$product_info['price'])*100, 0).'%';
+                } else {
+                    $data['discount'] = false;
+            }
+			
+			
+            /***end theme's changes***/
+             ]]></add>
+        </operation>
+		<operation>
+			<search ><![CDATA[if ((float)$result['special'])]]></search>
+			<add position="before"><![CDATA[
+				if ((float)$result['special']) {
+						$discount = '-'.round((($result['price'] - $result['special'])/$result['price'])*100, 0).'%';
+					} else {
+						$discount = false;
+				}
+			   ]]></add>
+		</operation>
+		
+		<operation>
+			<search ><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'date_available'  => $result['date_available'],
+				'discount'  => $discount,
+			   ]]></add>
+		</operation> 
+		
+		<operation error="skip">
+			<search ><![CDATA[$this->document->addScript('catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js');]]></search>
+			<add position="replace"><![CDATA[
+				$this->document->addScript('catalog/view/javascript/soconfig/js/jquery.elevateZoom-3.0.8.min.js');
+				$this->document->addScript('catalog/view/javascript/soconfig/js/lightslider.js');
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search ><![CDATA[$this->document->addStyle('catalog/view/javascript/jquery/magnific/magnific-popup.css');]]></search>
+			<add position="replace"><![CDATA[$this->document->addStyle('catalog/view/javascript/soconfig/css/lightslider.css');]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA[$data['thumb'] = '']]></search>
+			<add position="replace"><![CDATA[// Empty check images placeholder
+				$data['thumb'] = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+			]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA[$data['popup'] = '']]></search>
+			<add position="replace"><![CDATA[// Empty check images placeholder
+				$data['popup'] = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height'));
+			]]></add>
+		</operation>
+	</file>
+	
+	<file path="catalog/controller/product/{search,special,manufacturer}*.php">
+       <operation>
+            <search><![CDATA[$data['products'][] = array( ]]></search>
+            <add position="before"><![CDATA[
+                 /***theme's changes***/
+                $data['store_id'] = $this->config->get('config_store_id');
+				$store_id = $this->config->get('config_store_id');
+                $data['lang'] = $this->config->get('config_language_id');
+				$lang = $this->config->get('config_language_id');
+				$data['theme'] = $this->config->get('theme_default_directory');
+				$data['registry'] = $this->registry;
+				$data['our_url'] = $this->registry->get('url');
+				$this->load->model('soconfig/general');
+				
+                /* PAGE PRODUCT */
+				$text_config = array(
+					'product_catalog_mode',
+					'other_catalog_column_lg',
+					'other_catalog_column_md',
+					'other_catalog_column_sm',
+					'other_catalog_column_xs',
+					'secondimg',
+					'rating_status',
+					'lstdescription_status',
+					'sale_status',
+					'new_status',
+					'days',
+					'quick_status',
+					'discount_status',
+					'countdown_status',
+					'sale_text',
+					'new_text',
+					'quick_view_text',
+					'scroll_animation',
+				);
+				
+				foreach ($text_config as $text ) {
+					$data[$text] = $this->soconfig->get_settings($text);
+				}
+		
+				
+				//Language Variables
+				$this->load->language('extension/soconfig/soconfig');
+				$data['lang_todaysdeal'] = $this->language->get('lang_todaysdeal');
+				$data["view_details"]  	= $this->language->get('view_details');
+				$data['countdown_title_day'] 	= $this->language->get('countdown_title_day');
+				$data['countdown_title_hour'] 	= $this->language->get('countdown_title_hour');
+				$data['countdown_title_minute'] = $this->language->get('countdown_title_minute');
+				$data['countdown_title_second'] = $this->language->get('countdown_title_second');
+                /***end theme's changes***/
+            ]]></add>
+        </operation>
+        <operation>
+			<search ><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				if ((float)$result['special']) {
+                    $discount = '-'.round((($result['price'] - $result['special'])/$result['price'])*100, 0).'%';
+                } else {
+                    $discount = false;
+                }
+			   ]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'special_end_date'  => $this->model_soconfig_general->getDateEnd($result['product_id']),
+				'date_available'  => $result['date_available'],
+				'discount'  => $discount,
+			   ]]></add>
+		</operation> 
+      
+    </file>
+	<!-- End catalog/controller/product/-->
+	
+	<!-- catalog/controller/extension/module/-->
+	<file path="catalog/controller/extension/module/so_filter_shop_by.php">
+       <operation>
+            <search><![CDATA[$footer 			= '';]]></search>
+            <add position="after"><![CDATA[
+		 /***theme's changes***/
+		$this->load->language('extension/soconfig/soconfig');
+		$registry 			= $this->registry;
+		$text_viewdeals  = $this->language->get('text_viewdeals');
+		$our_url = $this->registry->get('url');
+		$theme 				= $this->config->get('theme_default_directory');
+		$deals_today 		= $this->soconfig->get_settings('deals_today');
+		$scroll_animation  	= 0;
+		$secondimg   		= $this->soconfig->get_settings('secondimg');
+		$days   			= $this->soconfig->get_settings('days');
+		$lstimg_cate_status    					= $this->soconfig->get_settings('lstimg_cate_status ');
+		$product_catalog_column_lg   			= $this->soconfig->get_settings('product_catalog_column_lg');
+		$product_catalog_column_md   			= $this->soconfig->get_settings('product_catalog_column_md');
+		$product_catalog_column_sm   			= $this->soconfig->get_settings('product_catalog_column_sm');
+		$product_catalog_column_xs   			= $this->soconfig->get_settings('product_catalog_column_xs');
+		
+		$countdown_title_day 	= $this->language->get('countdown_title_day');
+		$countdown_title_hour 	= $this->language->get('countdown_title_hour');
+		$countdown_title_minute = $this->language->get('countdown_title_minute');
+		$countdown_title_second = $this->language->get('countdown_title_second');
+		$text_stock 			= $this->language->get('text_stock');
+		
+		/***end theme's changes***/
+            ]]></add>
+        </operation>
+		
+		<operation>
+			<search ><![CDATA[$data['products'] 	= array();]]></search>
+			<add position="after"><![CDATA[
+				$this->load->model('soconfig/general');
+			   ]]></add>
+		</operation>
+		
+		<operation>
+			<search ><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				if ((float)$result['special']) {
+					$discount = '-'.round((($result['price'] - $result['special'])/$result['price'])*100, 0).'%';
+				} else {
+					$discount = false;
+				}
+				$images = $this->model_catalog_product->getProductImages($result['product_id']);
+				if(isset($images[0]['image']) && !empty($images[0]['image'])){
+					$images =$images[0]['image'];
+					} else {
+					$images = false;
+				}
+			   ]]></add>
+		</operation> 
+        <operation>
+			<search ><![CDATA[$data['products'][] = array(]]></search>
+			<add position="after"><![CDATA[
+				'date_available'  => $result['date_available'],
+				'discount'  => $discount,
+				'special_end_date'  => $this->model_soconfig_general->getDateEnd($result['product_id']),
+				'image_deal'      => $this->model_tool_image->resize($result['image'],270 ,295 ),
+				'thumb2' 			=> $this->model_tool_image->resize($images, $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height')),
+			   ]]></add>
+		</operation>
+		
+    </file>
+	<file path="catalog/controller/extension/module/featured.php">
+       <operation>
+            <search><![CDATA[$data['products'][] = array( ]]></search>
+            <add position="before"><![CDATA[
+                 /***theme's changes***/
+                $data['store_id'] = $this->config->get('config_store_id');
+				$store_id = $this->config->get('config_store_id');
+                $data['lang'] = $this->config->get('config_language_id');
+				$lang = $this->config->get('config_language_id');
+				$data['theme'] = $this->config->get('theme_default_directory');
+				$data['registry'] = $this->registry;
+				$data['our_url'] = $this->registry->get('url');
+				$this->load->model('soconfig/general');
+				
+                /* PAGE PRODUCT */
+				$text_config = array(
+					'product_catalog_mode',
+					'other_catalog_column_lg',
+					'other_catalog_column_md',
+					'other_catalog_column_sm',
+					'other_catalog_column_xs',
+					'secondimg',
+					'rating_status',
+					'lstdescription_status',
+					'sale_status',
+					'new_status',
+					'days',
+					'quick_status',
+					'discount_status',
+					'countdown_status',
+					'sale_text',
+					'new_text',
+					'quick_view_text',
+					'scroll_animation',
+				);
+				
+				foreach ($text_config as $text ) {
+					$data[$text] = $this->soconfig->get_settings($text);
+				}
+		
+				
+				//Language Variables
+				$this->load->language('extension/soconfig/soconfig');
+				$data['lang_todaysdeal'] = $this->language->get('lang_todaysdeal');
+				$data["view_details"]  	= $this->language->get('view_details');
+				$data['countdown_title_day'] 	= $this->language->get('countdown_title_day');
+				$data['countdown_title_hour'] 	= $this->language->get('countdown_title_hour');
+				$data['countdown_title_minute'] = $this->language->get('countdown_title_minute');
+				$data['countdown_title_second'] = $this->language->get('countdown_title_second');
+                /***end theme's changes***/
+            ]]></add>
+        </operation>
+        <operation>
+			<search ><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				if ((float)$product_info['special']) {
+                    $discount = '-'.round((($product_info['price'] - $product_info['special'])/$product_info['price'])*100, 0).'%';
+                } else {
+                    $discount = false;
+                }
+			   ]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'special_end_date'  => $this->model_soconfig_general->getDateEnd($product_info['product_id']),
+				'date_available'  => $product_info['date_available'],
+				'discount'  => $discount,
+			   ]]></add>
+		</operation> 
+      
+    </file>
+	<file path="catalog/controller/error/not_found.php">
+       <operation>
+            <search><![CDATA[$data['heading_title']]]></search>
+			<add position="after"><![CDATA[
+				$data['theme'] = $this->config->get('theme_default_directory');
+            ]]></add>
+		</operation>	
+	</file>
+	<file path="catalog/controller/extension/module/{latest,special,bestseller}*.php">
+       <operation>
+            <search><![CDATA[$data['products'][] = array( ]]></search>
+            <add position="before"><![CDATA[
+                 /***theme's changes***/
+                $data['store_id'] = $this->config->get('config_store_id');
+				$store_id = $this->config->get('config_store_id');
+                $data['lang'] = $this->config->get('config_language_id');
+				$lang = $this->config->get('config_language_id');
+				$data['theme'] = $this->config->get('theme_default_directory');
+				$data['registry'] = $this->registry;
+				$data['our_url'] = $this->registry->get('url');
+				$this->load->model('soconfig/general');
+				
+                /* PAGE PRODUCT */
+				$text_config = array(
+					'product_catalog_mode',
+					'other_catalog_column_lg',
+					'other_catalog_column_md',
+					'other_catalog_column_sm',
+					'other_catalog_column_xs',
+					'secondimg',
+					'rating_status',
+					'lstdescription_status',
+					'sale_status',
+					'new_status',
+					'days',
+					'quick_status',
+					'discount_status',
+					'countdown_status',
+					'sale_text',
+					'new_text',
+					'quick_view_text',
+					'scroll_animation',
+				);
+				
+				foreach ($text_config as $text ) {
+					$data[$text] = $this->soconfig->get_settings($text);
+				}
+		
+				
+				//Language Variables
+				$this->load->language('extension/soconfig/soconfig');
+				$data['lang_todaysdeal'] = $this->language->get('lang_todaysdeal');
+				$data["view_details"]  	= $this->language->get('view_details');
+				$data['countdown_title_day'] 	= $this->language->get('countdown_title_day');
+				$data['countdown_title_hour'] 	= $this->language->get('countdown_title_hour');
+				$data['countdown_title_minute'] = $this->language->get('countdown_title_minute');
+				$data['countdown_title_second'] = $this->language->get('countdown_title_second');
+                /***end theme's changes***/
+            ]]></add>
+        </operation>
+        <operation>
+			<search ><![CDATA[$data['products'][] = array(]]></search>
+			<add position="before"><![CDATA[
+				if ((float)$result['special']) {
+                    $discount = '-'.round((($result['price'] - $result['special'])/$result['price'])*100, 0).'%';
+                } else {
+                    $discount = false;
+                }
+			   ]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA['special'     => $special,]]></search>
+			<add position="after"><![CDATA[
+				'special_end_date'  => $this->model_soconfig_general->getDateEnd($result['product_id']),
+				'date_available'  => $result['date_available'],
+				'discount'  => $discount,
+			   ]]></add>
+		</operation> 
+      
+    </file>
+	
+	<!-- End catalog/controller/extension/module-->
+	
+	<!--  system/library/template/-->
+	<file path="system/library/template/basic.php">
+      <operation>
+            <search><![CDATA[private $data = array();]]></search>
+            <add position="after"><![CDATA[
+			  public function __get($key) {
+				global $registry;
+				return $registry->get($key);
+			  }
+			  public function __set($key, $value) {
+			  global $registry;
+				  $registry->set($key, $value);
+			  }
+			  
+            ]]></add>
+        </operation>
+    </file>
+	<file path="system/engine/front.php">
+        <operation>
+            <search ><![CDATA[while ($action instanceof Action) {]]></search>
+            <add position="before"><![CDATA[
+				require_once(DIR_SYSTEM . 'soconfig/startup.php');
+            ]]></add>
+        </operation>
+    </file>
+	<!-- End system/library/template/-->
+	
+	<!--  admin/controller-->
+	<file path="admin/controller/design/layout.php">
+		<operation >
+			<search ><![CDATA[design/layout_form]]></search>
+			<add position="replace"><![CDATA[extension/soconfig/layout_form_soconfig]]></add>
+		</operation>
+	</file>
+	
+	<file path="admin/view/template/setting/store_list.tpl">
+        <operation>
+            <search   ><![CDATA[ $store['name']]]></search>
+            <add position="replace"><![CDATA[
+             $store['name'].' <span class="label label-default" style="font-weight:normal"> Version v1.0.1</span> ';
+            ]]></add>
+	    </operation>
+    </file>
+	<!--  End admin/controller-->
+</modification>

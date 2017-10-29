@@ -1,0 +1,151 @@
+                       477428383<div class="responsive megamenu-style-dev ">
+	<div class="cl-padding">		<nav class="navbar-default">
+	<div class=" container-megamenu  vertical ">
+				<div id="menuHeading" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+			<div class="megamenuToogle-wrapper hidden-sm hidden-xs">
+				<div class="megamenuToogle-pattern font-ct">
+					<div class="container">
+							<div><span></span><span></span><span></span></div>
+							<span class="title-mega">All Departments</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar-header">
+			<span class="title-navbar hidden-lg hidden-md">All Departments</span>
+			<button type="button" id="show-verticalmenu" data-toggle="collapse"  class="navbar-toggle">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		
+					<div class="vertical-wrapper" aria-labelledby="menuHeading">
+		
+							<span id="remove-verticalmenu" class="fa fa-times"></span>
+			
+			<div class="megamenu-pattern">
+				<div class="container">
+					<ul class="megamenu"
+					data-transition="slide" data-animationtime="300">
+
+						
+						<li class='item-vertical style1 with-sub-menu hover' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=79' class='clearfix' >
+										<span><strong>
+											<i class='icon icon1'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-6.png" alt="">Fashion
+										</strong></span>
+										 <span class='label'> </span>
+										<b class='fa fa-angle-right' ></b>
+										</a><div class="sub-menu" style="width:900px"><div class="content"><div class="row"><div class="col-sm-8"><div class="categories "><div class="row"><div class="col-sm-6 static-menu"><div class="menu"><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25';" class="main-menu">Components</a><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_29" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_29';">Mice and Trackballs</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_28" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_28';">Monitors</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_28_35" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_28_35';">test 1</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_28_36" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_28_36';">test 2</a></li></ul></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34';" class="main-menu">MP3 Players</a><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_43" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_43';">test 11</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_47" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_47';">test 15</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_48" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_48';">test 16</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_55" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_55';">test 23</a></li></ul></li></ul></div></div><div class="col-sm-6 static-menu"><div class="menu"><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=17" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=17';" class="main-menu">Software</a><ul></ul></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=57" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=57';" class="main-menu">Tablets</a><ul></ul></li></ul></div></div></div></div></div><div class="col-sm-4"><div class="html "><div class="row img-banner"><a href="#"><img src="image/catalog/demo/menu/img-static-megamenu-h.png" alt="banner"></a></div></div></div></div></div></div></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon2'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-1.png" alt="">Computer
+										</strong></span>
+										 <span class='label'> </span>
+										</a></li>
+<li class='item-vertical  item-style3 with-sub-menu hover' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=33' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon3'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-2.png" alt="">Furniture
+										</strong></span>
+										 <span class='label'> </span>
+										<b class='fa fa-angle-right' ></b>
+										</a><div class="sub-menu" style="width:650px"><div class="content"><div class="row"><div class="col-sm-4"><div class="categories "><div class="row"><div class="col-sm-12 static-menu"><div class="menu"><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25';" class="main-menu">Components</a><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_48" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_48';">test 16</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_43" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_43';">test 11</a></li></ul></li></ul></div></div></div></div></div><div class="col-sm-4"><div class="categories "><div class="row"><div class="col-sm-12 static-menu"><div class="menu"><ul></ul></div></div></div></div></div><div class="col-sm-4"><div class="categories "><div class="row"><div class="col-sm-12 static-menu"><div class="menu"><ul></ul></div></div></div></div></div></div><div class="border"></div><div class="row"><div class="col-sm-12"><div class="link banner-full"><img src="http://localhost/oc2/image/catalog/demo/menu/menu_bg2.jpg" alt="" style="width: 100%;"></div></div></div></div></div></li>
+<li class='item-vertical with-sub-menu hover' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=33' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon4'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-3.png" alt="">Smartphone
+										</strong></span>
+										 <span class='label'> </span>
+										<b class='fa fa-angle-right' ></b>
+										</a><div class="sub-menu" style="width:900px"><div class="content"><div class="row"><div class="col-sm-12"><div class="categories "><div class="row"><div class="col-sm-4 static-menu"><div class="menu"><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=33" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=33';" class="main-menu">Cameras</a><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_31" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_31';">Scanners</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_32" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_32';">Web Cameras</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_55" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_55';">test 23</a></li></ul></li></ul></div></div><div class="col-sm-4 static-menu"><div class="menu"><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25';" class="main-menu">Components</a><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_44" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_44';">test 12</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_32" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_32';">Web Cameras</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_28_36" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_28_36';">test 2</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_28_35" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_28_35';">test 1</a></li></ul></li></ul></div></div><div class="col-sm-4 static-menu"><div class="menu"><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=17" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=17';" class="main-menu">Software</a><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_48" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_48';">test 16</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34_47" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34_47';">test 15</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_28_35" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_28_35';">test 1</a></li></ul></li></ul></div></div></div></div></div></div></div></div></li>
+<li class='item-vertical css-menu with-sub-menu hover' ><p class='close-menu'></p><a href='' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon5'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-4.png" alt="">Health &amp; Beauty
+										</strong></span>
+										 <span class='label'> </span>
+										<b class='fa fa-angle-right' ></b>
+										</a><div class="sub-menu" style="width:250px"><div class="content"><div class="row"><div class="col-sm-12"><div class="categories "><div class="row"><div class="col-sm-12 hover-menu"><div class="menu"><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_31" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_31';" class="main-menu">Scanners</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=34" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=34';" class="main-menu">MP3 Players</a></li><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=25_28" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=25_28';" class="main-menu">Monitors<b class="fa fa-angle-right"></b></a><ul><li><a href="http://localhost/oc2/index.php?route=product/category&amp;path=18" onclick="window.location = 'http://localhost/oc2/index.php?route=product/category&amp;path=18';">Laptops &amp; Notebooks</a></li></ul></li></ul></div></div></div></div></div></div></div></div></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=80' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon6'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-5.png" alt="">Sport Clothing
+										</strong></span>
+										 <span class='label'> </span>
+										</a></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon7'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-7.png" alt="">Watch &amp; Jewelry
+										</strong></span>
+										 <span class='label'> </span>
+										</a></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=57' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon8'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-8.png" alt="">Kitchen
+										</strong></span>
+										 <span class='label'> </span>
+										</a></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=46' class='clearfix' >
+										<span><strong>
+											<i class='icon  icon9'></i><img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-9.png" alt="">Accessories
+										</strong></span>
+										 <span class='label'> </span>
+										</a></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=46' class='clearfix' >
+										<span><strong>
+											<img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-6.png" alt="">Women Fashion
+										</strong></span>
+										 
+										</a></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=46' class='clearfix' >
+										<span><strong>
+											<img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-7.png" alt="">Jewelry &amp; Watches
+										</strong></span>
+										 
+										</a></li>
+<li class='item-vertical' ><p class='close-menu'></p><a href='http://localhost/oc2/index.php?route=product/category&amp;path=46' class='clearfix' >
+										<span><strong>
+											<img src="http://localhost/oc2/image/catalog/demo/menu/icon/icon-9.png" alt="">Battereries &amp; Chargers
+										</strong></span>
+										 
+										</a></li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	</div></div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var itemver =  9 ;
+		if(itemver <= $( ".vertical ul.megamenu >li" ).length)
+			$('.vertical ul.megamenu').append('<li class="loadmore"><i class="fa fa-plus"></i><span class="more-view"> More Categories</span></li>');
+		$('.horizontal ul.megamenu li.loadmore').remove();
+
+		var show_itemver = itemver-1 ;
+		$('ul.megamenu > li.item-vertical').each(function(i){
+			if(i>show_itemver){
+					$(this).css('display', 'none');
+			} 
+		});
+		$(".megamenu .loadmore").click(function(){
+			if($(this).hasClass('open')){
+				$('ul.megamenu li.item-vertical').each(function(i){
+						if(i>show_itemver){
+								$(this).slideUp(200);
+								$(this).css('display', 'none');
+						}
+				});
+				$(this).removeClass('open');
+				$('.loadmore').html('<i class="fa fa-plus"></i><span class="more-view">More Categories</span>');
+			}else{
+				$('ul.megamenu li.item-vertical').each(function(i){
+						if(i>show_itemver){
+								$(this).slideDown(200);
+						}
+				});
+				$(this).addClass('open');
+				$('.loadmore').html('<i class="fa fa-minus"></i><span class="more-view">Close Categories</span>');
+			}
+		});
+	});
+</script>

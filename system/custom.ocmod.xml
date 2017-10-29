@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name><![CDATA[soconfig theme]]></name>
+    <version><![CDATA[1.0.0]]></version>
+    <author><![CDATA[Magentech - Magentech.com]]></author>
+	<!--Dev: Custom-->
+	
+	<file path="admin/controller/common/column_left.php">
+		<operation>
+			<search><![CDATA[$this->url->link('catalog/product']]></search>
+			<add  position="replace"><![CDATA[$this->url->link('catalog/mproduct']]></add>
+		</operation>
+	   <operation>
+			<search><![CDATA[$design = array();]]></search>
+			<add  position="before"><![CDATA[
+				$magentech = array();
+				if ($this->user->hasPermission('access', 'extension/module/soconfig')) {		
+					$magentech[] = array(
+						'name'	   => 'So Themes Config',
+						'href'     => $this->url->link('extension/module/soconfig', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_page_builder')) {		
+					$magentech[] = array(
+						'name'	   => 'So Page Builder',
+						'href'     => $this->url->link('extension/module/so_page_builder', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_megamenu')) {		
+					$magentech[] = array(
+						'name'	   => 'So Megamenu',
+						'href'     => $this->url->link('extension/module/so_megamenu', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_newletter_custom_popup')) {		
+					$magentech[] = array(
+						'name'	   => 'So Newletter',
+						'href'     => $this->url->link('extension/module/so_newletter_custom_popup', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				
+				if ($this->user->hasPermission('access', 'extension/module/so_deals')) {		
+					$magentech[] = array(
+						'name'	   => 'So Deals',
+						'href'     => $this->url->link('extension/module/so_deals', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_extra_slider')) {		
+					$magentech[] = array(
+						'name'	   => 'So Extra Slider',
+						'href'     => $this->url->link('extension/module/so_extra_slider', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				
+				if ($this->user->hasPermission('access', 'extension/module/so_html_content')) {		
+					$magentech[] = array(
+						'name'	   => 'So Html Content',
+						'href'     => $this->url->link('extension/module/so_html_content', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+
+				if ($this->user->hasPermission('access', 'extension/module/so_sociallogin')) {		
+					$magentech[] = array(
+						'name'	   => 'So Social Login',
+						'href'     => $this->url->link('extension/module/so_sociallogin', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_listing_tabs')) {		
+					$magentech[] = array(
+						'name'	   => 'So Listing Tabs',
+						'href'     => $this->url->link('extension/module/so_listing_tabs', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_basic_products')) {		
+					$magentech[] = array(
+						'name'	   => 'So Basic Products',
+						'href'     => $this->url->link('extension/module/so_basic_products', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_super_category')) {		
+					$magentech[] = array(
+						'name'	   => 'So Super Category',
+						'href'     => $this->url->link('extension/module/so_super_category', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_category_slider')) {		
+					$magentech[] = array(
+						'name'	   => 'So Category Slider',
+						'href'     => $this->url->link('extension/module/so_category_slider', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_latest_blog')) {		
+					$magentech[] = array(
+						'name'	   => 'So Latest Blog',
+						'href'     => $this->url->link('extension/module/so_latest_blog', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_home_slider')) {		
+					$magentech[] = array(
+						'name'	   => 'So Home Slider',
+						'href'     => $this->url->link('extension/module/so_home_slider', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_filter_shop_by')) {		
+					$magentech[] = array(
+						'name'	   => 'So Filter Shop By',
+						'href'     => $this->url->link('extension/module/so_filter_shop_by', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_popular_tags')) {		
+					$magentech[] = array(
+						'name'	   => 'So Popular Tags',
+						'href'     => $this->url->link('extension/module/so_popular_tags', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+				if ($this->user->hasPermission('access', 'extension/module/so_searchpro')) {		
+					$magentech[] = array(
+						'name'	   => 'So Search Pro',
+						'href'     => $this->url->link('extension/module/so_searchpro', 'token=' . $this->session->data['token'], true),
+						'children' => array()
+					);
+				}
+
+				if ($extension) {					
+					$data['menus'][] = array(
+						'id'       => 'menu-magentech',
+						'icon'	   => 'fa-wrench icon-so', 
+						'name'	   => 'Magentech',
+						'href'     => '',
+						'children' => $magentech
+					);		
+				}
+				
+			]]></add>
+		</operation>
+		
+	</file>
+
+
+
+	<!--  End admin/controller-->
+	
+</modification>

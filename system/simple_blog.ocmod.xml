@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name><![CDATA[Simple Blog]]></name>
+    <version><![CDATA[1.1.0]]></version>
+    <author><![CDATA[Magentech - Magentech.com]]></author>
+	
+	<file path="admin/controller/common/column_left.php">
+		<operation>
+            <search><![CDATA[if ($report) {]]></search>
+            <add position="before"><![CDATA[
+							// Simple Blog
+			$simpleblog = array();
+
+			if ($this->user->hasPermission('access', 'simple_blog/author')) {
+				$simpleblog[] = array(
+					'name'	   => $this->language->get('text_simple_blog_author'),
+					'href'     => $this->url->link('simple_blog/author', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'simple_blog/article')) {
+				$simpleblog[] = array(
+					'name'	   => $this->language->get('text_simple_blog_article'),
+					'href'     => $this->url->link('simple_blog/article', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'simple_blog/category')) {
+				$simpleblog[] = array(
+					'name'	   => $this->language->get('text_simple_blog_category'),
+					'href'     => $this->url->link('simple_blog/category', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'simple_blog/comment')) {
+				$simpleblog[] = array(
+					'name'	   => $this->language->get('text_simple_blog_article_comment'),
+					'href'     => $this->url->link('simple_blog/comment', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'simple_blog/report')) {
+				$simpleblog[] = array(
+					'name'	   => $this->language->get('text_simple_blog_view_report'),
+					'href'     => $this->url->link('simple_blog/report', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+			}
+
+
+			$simpleblogsettings = array();
+			
+				$simpleblogsettings[] = array(
+					'name'	   => $this->language->get('text_simple_blog_general_setting'),
+					'href'     => $this->url->link('extension/module/simple_blog', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+		
+
+			
+				$simpleblogsettings[] = array(
+					'name'	   => $this->language->get('text_simple_blog_category_setting'),
+					'href'     => $this->url->link('extension/module/simple_blog_category', 'token=' . $this->session->data['token'], true),
+					'children' => array()
+				);
+			
+
+
+			if ($simpleblogsettings) {
+				$simpleblog[] = array(
+					'name'	   => $this->language->get('text_simple_blog_setting'),
+					'href'     => '',
+					'children' => $simpleblogsettings
+				);
+			}
+
+			if ($simpleblog) {
+				$data['menus'][] = array(
+					'id'       => 'menu-simpleblog',
+					'icon'	   => 'fa-file-text-o',
+					'name'	   => $this->language->get('text_simple_blogs'),
+					'href'     => '',
+					'children' => $simpleblog
+				);
+			}
+			]]></add>
+        </operation>
+	</file>
+	
+	<file path="admin/language/*/common/column_left.php">
+        <operation>
+            <search><![CDATA[$_['text_other_status']]]></search>
+            <add position="after"><![CDATA[
+				$_['text_simple_blogs']	= 'Simple Blog';
+				$_['text_simple_blog_author']	= 'Author';
+				$_['text_simple_blog_category']	= 'Category';
+				$_['text_simple_blog_article']	= 'Article';
+				$_['text_simple_blog_article_comment']	= 'Article Comment';
+				$_['text_simple_blog_setting'] = 'Setting';
+				$_['text_simple_blog_general_setting'] = 'General Setting';
+				$_['text_simple_blog_category_setting'] = 'Category Setting';
+				$_['text_simple_blog_view_report'] = 'Report';
+			]]></add>
+        </operation>
+    </file>
+	<!--  End admin/controller-->
+	
+	<!--catalog/controller/common-->
+	<file path="catalog/controller/startup/seo_url.php">
+		<operation>
+			<search><![CDATA[if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {]]></search>
+			<add position="replace"><![CDATA[
+				if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id' && $url[0] != 'simple_blog_article_id' && $url[0] != 'simple_blog_category_id' && $url[0] != 'simple_blog_author_id') {
+			]]></add>
+		</operation>
+       <operation>
+            <search><![CDATA[if ($url[0] == 'category_id') {]]></search>
+            <add position="before"><![CDATA[
+          if($url[0] == 'simple_blog_article_id') {					
+    					$this->request->get['simple_blog_article_id'] = $url[1];
+              $query->row['query'] = '';
+    				}
+            
+    				if($url[0] == 'simple_blog_author_id') {
+    					$this->request->get['simple_blog_author_id'] = $url[1];
+              $query->row['query'] = '';
+    				}
+    				
+    				if ($url[0] == 'simple_blog_category_id') {
+    					if (!isset($this->request->get['simple_blog_category_id'])) {
+    						$this->request->get['simple_blog_category_id'] = $url[1];
+    					} else {
+    						$this->request->get['simple_blog_category_id'] .= '_' . $url[1];
+    					}
+              $query->row['query'] = '';
+    				}
+         
+            ]]></add>
+        </operation>
+        
+        <operation>
+            <search><![CDATA[$this->request->get['route'] = 'error/not_found']]></search>
+            <add position="replace"><![CDATA[
+          if(($this->config->has('simple_blog_seo_keyword')) && ($this->db->escape($part) == $this->config->get('simple_blog_seo_keyword'))) {
+                    
+                } else if($this->db->escape($part) == 'simple-blog') {
+                    
+                } else {
+                    $this->request->get['route'] = 'error/not_found';
+
+					       break;
+               }  
+
+            ]]></add>
+        </operation>
+        
+        <operation>
+            <search><![CDATA[$this->request->get['route'] = 'information/information';]]></search>
+            <add position="replace"><![CDATA[
+          $this->request->get['route'] = 'information/information';
+  				} else if (isset($this->request->get['simple_blog_article_id'])) {
+  					$this->request->get['route'] = 'simple_blog/article/view';
+  				} else if (isset($this->request->get['simple_blog_author_id'])) {
+  					$this->request->get['route'] = 'simple_blog/author';
+  				} else if (isset($this->request->get['simple_blog_category_id'])) {
+  					$this->request->get['route'] = 'simple_blog/category';
+  				} /*else if ($this->request->get['_route_'] ==  'simple-blog') {
+  					$this->request->get['route'] = 'simple_blog/article';*/
+                      
+          else {
+            if(($this->config->has('simple_blog_seo_keyword'))) {
+                if($this->request->get['_route_'] == $this->config->get('simple_blog_seo_keyword')) {
+                    $this->request->get['route'] = 'simple_blog/article';
+                }
+            } if($this->request->get['_route_'] == 'simple-blog') {
+                $this->request->get['route'] = 'simple_blog/article';
+           }
+            ]]></add>
+        </operation>
+        
+        <operation>
+            <search><![CDATA[} elseif ($key == 'path') {]]></search>
+            <add position="replace"><![CDATA[
+          
+				} else if($data['route'] == 'simple_blog/article/view' && $key == 'simple_blog_article_id') {
+					
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
+					
+					if ($query->num_rows) {
+						$url .= '/' . $query->row['keyword'];
+						unset($data[$key]);
+					} else {
+						$url .= '/simple-blog/' . (int)$value;	
+						unset($data[$key]);
+					}
+					
+				} else if($data['route'] == 'simple_blog/author' && $key == 'simple_blog_author_id') {
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
+					
+					if ($query->num_rows) {
+						$url .= '/' . $query->row['keyword'];
+						unset($data[$key]);
+					} else {
+						$url .= '/simple-blog/' . (int)$value;	
+						unset($data[$key]);
+					}
+				} else if($data['route'] == 'simple_blog/category' && $key == 'simple_blog_category_id') {
+				
+					$blog_categories = explode("_", $value);
+					
+					foreach ($blog_categories as $blog_category) {
+						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'simple_blog_category_id=" . (int)$blog_category . "'");
+						
+						if ($query->num_rows) {
+							$url .= '/' . $query->row['keyword'];
+						} else {
+							$url .= '/simple-category' . $blog_category;
+						}
+					}
+					unset($data[$key]);
+										
+				} else if($data['route'] == 'simple_blog/search') {
+					//echo $data['route'];
+					if(isset($key) && ($key == 'blog_search')) {
+						$url .= '/search&blog_search=' . $value;
+					} else {
+						$url .= '/search';
+					}		
+					//echo $url; 
+				} else if(isset($data['route']) && $data['route'] == 'simple_blog/article' && $key != 'simple_blog_article_id' && $key != 'simple_blog_author_id' && $key != 'simple_blog_category_id' && $key != 'page') {
+				    
+                    if($this->config->has('simple_blog_seo_keyword')) {
+                        $url .=  '/' . $this->config->get('simple_blog_seo_keyword');
+                    } else {
+                        $url .=  '/simple-blog';
+                    }
+				} elseif ($key == 'path') {
+        
+            ]]></add>
+        </operation>
+        
+    </file>
+	
+	<file path="catalog/controller/common/header.php">
+		<!--changes for Blog-->
+        <operation>
+            <search><![CDATA[$categories = $this->model_catalog_category->getCategories(0);]]></search>
+            <add position="after"><![CDATA[
+				/***blog changes***/
+				$data['blog_link_status'] = 1;
+				$data['blog_link_url'] = 'index.php?route=simple_blog/article';
+				if(isset($this->request->get['route'])) {
+					$route = $this->request->get['route'];
+				} else {
+					$route = 'common/home';
+				}
+
+				$route = explode("/", $route);
+
+				if($this->config->get('simple_blog_status')) {
+    				$this->load->model('simple_blog/article');
+
+    				$count_blog_categories = $this->model_simple_blog_article->getTotalCategories(0);
+                }
+
+				if (isset($count_blog_categories) && $this->config->get('simple_blog_display_category') && $this->config->get('simple_blog_status')) {
+
+					$categories = $this->model_simple_blog_article->getCategories(0);
+
+					foreach ($categories as $category) {
+						if ($category['top']) {
+							// Level 2
+							$children_data = array();
+
+							$children = $this->model_simple_blog_article->getCategories($category['simple_blog_category_id']);
+
+							foreach ($children as $child) {
+
+								$article_total = $this->model_simple_blog_article->getTotalArticles($child['simple_blog_category_id']);
+                                if ($child['image']) {
+                                    $this->load->model('tool/image');
+
+                                    $image = $this->model_tool_image->resize($child['image'], 205, 130);
+                                } else {
+                                    $image = false;
+                                }
+
+								$children_data[] = array(
+                                    'image'  => $image,
+								    'external_link' => $child['external_link'],
+									'name'  => $child['name'],
+									'href'  => $this->url->link('simple_blog/category', 'simple_blog_category_id=' . $category['simple_blog_category_id'] . '_' . $child['simple_blog_category_id'])
+								);
+							}
+
+							$menu_class = 'simple_blog';
+
+							// Level 1
+							$data['categories'][] = array(
+								'name'     => $category['name'],
+								'external_link' => $category['external_link'],
+								'children' => $children_data,
+								'menu_class' => $menu_class,
+								'column'   => $category['blog_category_column'] ? $category['blog_category_column'] : 1,
+								'href'     => $this->url->link('simple_blog/category', 'simple_blog_category_id=' . $category['simple_blog_category_id'])
+							);
+						}
+					}
+
+				}
+				$categories = $this->model_catalog_category->getCategories(0);
+				/***end blog changes***/
+			]]></add>
+        </operation>
+	</file>
+	
+	
+</modification>
